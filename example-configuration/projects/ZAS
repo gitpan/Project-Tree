@@ -1,0 +1,53 @@
+$PTREE_PROJECT_DEFINITION_HREF = {
+
+	desc => 'ZYN! Autoren System',
+	
+	root_dir => '/home/joern/projects/ZAS',
+	
+	dir_include => [
+		undef
+	],
+	
+	dir_exclude => [
+		'CVS$'
+	],
+	
+	file_include => [
+		{
+			re => '\\.(cipp|pl|pm)$',
+			color => 'red',
+			exec => 'nc'
+		},
+		{
+			re => '\\.inc$',
+			color => 'blue',
+			exec => 'nc'
+		},
+		{
+			re => '\\.html',
+			color => 'green',
+			exec => 'nc'
+		},
+		{
+			re => '\\.obj',
+			color => 'black',
+			exec => 'tgif'
+		},
+		{
+			re => undef,
+			color => 'black',
+			exec => 'nc'
+		}
+		
+	],
+	
+	file_exclude => [
+		'\\.bck$', '\\.tgz$'
+	],
+	
+	exec => {
+			nc => 'nc -noask %s',
+			tgif => 'tgif %s &'
+	}
+
+};

@@ -1,0 +1,38 @@
+$PTREE_PROJECT_DEFINITION_HREF = {
+
+	desc => 'CGI Perl Preprocessor',
+	
+	root_dir => '/home/joern/develop/CIPP',
+	
+	dir_include => [
+		undef
+	],
+	
+	dir_exclude => [
+		'CVS$'
+	],
+	
+	file_include => [
+		{
+			re => '\\.(cipp|pl|pm)$',
+			color => 'red',
+			exec => 'nc'
+		},
+		{
+			re => undef,
+			color => 'black',
+			exec => 'nc'
+		}
+		
+	],
+	
+	file_exclude => [
+		'.bck$',
+		'.pdf$'
+	],
+	
+	exec => {
+			nc => 'nc -noask %s'
+	}
+
+};

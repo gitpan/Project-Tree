@@ -1,0 +1,3 @@
+$PTREE_OPEN_PROJECTS_LREF = [
+	'ptree', 'ZAS', 'CIPP'
+];

@@ -1,0 +1,22 @@
+$PTREE_QUICK_ACCESS_LREF = [
+          {
+            'name' => '/home/joern/projects/ZAS/sql/zas.sql',
+            'exec' => 'nc -noask %s',
+            'color' => 'black'
+          },
+          {
+            'name' => '/home/joern/projects/ZAS/htdocs/zas/story/edit.cipp',
+            'exec' => 'nc -noask %s',
+            'color' => 'red'
+          },
+          {
+            'name' => '/home/joern/develop/CIPP/CIPP/CIPP.pm',
+            'exec' => 'nc -noask %s',
+            'color' => 'red'
+          },
+          {
+            'name' => '/home/joern/develop/CIPP/CIPP_Handler/CIPP_Handler.pm',
+            'exec' => 'nc -noask %s',
+            'color' => 'red'
+          }
+        ];

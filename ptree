@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+
+# $Id: ptree,v 1.2 1999/02/21 01:02:30 joern Exp $
+
+eval 'exec /usr/bin/perl  -S $0 ${1+"$@"}'
+    if 0; # not running under some shell
+
+use Project::Tree;
+gui;
