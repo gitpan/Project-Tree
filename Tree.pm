@@ -5,7 +5,7 @@ package Project::Tree;
 use strict;
 use vars qw($VERSION $REVISION @ISA @EXPORT);
 
-$VERSION = '0.01';
+$VERSION = '0.02';
 $REVISION = '$Revision: 1.4 $';
 
 require Exporter;
@@ -44,6 +44,21 @@ sub new {
 	};
 	
 	return bless $self, $type;
+}
+
+sub refresh_browser {
+	my $self = shift;
+	
+	$self->read_user_data ("$ENV{HOME}/.ptree");
+
+	my $tree = $self->create_tree;
+	$self->{widgets}->{tree}->destroy;
+
+	$self->{widgets}->{tree_box}->pack_start($tree, 1, 1, 0);
+
+	$self->{widgets}->{tree} = $tree;
+
+	1;
 }
 
 sub read_file {
@@ -168,13 +183,23 @@ sub build_gui {
 	my $subfactory = new Gtk::MenuFactory ('menu_bar');
 	$factory->add_subfactory($subfactory,'<Main>');
 	
-	my $entry = { path  =>  '<Main>/File/Exit',
+	my $entry;
+	
+	$entry = { path  =>  '<Main>/File/Refresh Browser',
+           widget          =>  undef,
+           callback        =>  sub { $self->refresh_browser }
+        };
+
+	$factory->add_entries($entry);
+
+	$entry = { path  =>  '<Main>/File/Exit',
 #           accelerator     =>  '<alt>Q',
            widget          =>  undef,
            callback        =>  sub {Gtk->exit(0)}
         };
 	 
 	$factory->add_entries($entry);
+
 	my $menubar = $subfactory->widget;
 	$menubar->show;
 	$box1->pack_start($menubar, 0, 1 ,0);
@@ -227,6 +252,9 @@ sub build_gui {
 	my $tree = $self->create_tree;
 	$box2->pack_start($tree, 1, 1, 0);
 	
+	$self->{widgets}->{tree_box} = $box2;
+	$self->{widgets}->{tree} = $tree;
+		
 	$win->show;
 	
 	1;

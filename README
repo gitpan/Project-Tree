@@ -181,7 +181,10 @@ $Id: Changes,v 1.2 1999/02/21 01:01:37 joern Exp $
 
 Revision history for Perl extension Project::Tree.
 
-0.01  Sat Feb 20 14:15:33 1999
+0.02  Sun Feb 28 13:36:35 MET 1999
+	- "Refresh Browser" function added
+
+0.01  Sat Feb 20 14:15:33 MET 1999
 	- original version; created by h2xs 1.18
 	- based on my first Gtk experience, a simple script for
 	  the project tree view with hardcoded file actions,
